@@ -1,6 +1,8 @@
 package com.yuanyang.struct;
 
 
+import java.nio.ByteBuffer;
+
 /**
  * DexFile Header
  *
@@ -29,6 +31,32 @@ public class DexHeader {
     private int classDefsOff;
     private int dataSize;
     private int dataOff;
+
+    public static DexHeader parse(ByteBuffer buffer) {
+        DexHeader header = new DexHeader();
+        header.setCheckSum(Integer.toHexString(parseCheckSum(buffer)));
+        header.setFileSize(buffer.getInt());
+        header.setHeaderSize(buffer.getInt());
+        header.setEndingTag(Integer.toHexString(buffer.getInt()));
+        header.setLinkSize(buffer.getInt());
+        header.setLinkOff(buffer.getInt());
+        header.setMapOff(buffer.getInt());
+        header.setStringIdsSize(buffer.getInt());
+        header.setStringIdsOff(buffer.getInt());
+        header.setTypeIdsSize(buffer.getInt());
+        header.setTypeIdsOff(buffer.getInt());
+        header.setProtoIdsSize(buffer.getInt());
+        header.setProtoIdsOff(buffer.getInt());
+        header.setFieldIdsSize(buffer.getInt());
+        header.setFieldIdsOff(buffer.getInt());
+        header.setMethodIdsSize(buffer.getInt());
+        header.setMethodIdsOff(buffer.getInt());
+        header.setClassDefsSize(buffer.getInt());
+        header.setClassDefsOff(buffer.getInt());
+        header.setDataSize(buffer.getInt());
+        header.setDataOff(buffer.getInt());
+        return header;
+    }
 
     public void setCheckSum(String checkSum) {
         this.checkSum = checkSum;
@@ -112,5 +140,39 @@ public class DexHeader {
 
     public void setDataOff(int dataOff) {
         this.dataOff = dataOff;
+    }
+
+    private static int parseCheckSum(ByteBuffer buffer) {
+        int checkSum = buffer.getInt();
+        // skip SHA1 signature
+        buffer.get(new byte[20]);
+        return checkSum;
+    }
+
+    @Override
+    public String toString() {
+        return "DexHeader{" + '\n' +
+                "checkSum='" + checkSum + '\n' +
+                "fileSize=" + fileSize + '\n' +
+                "headerSize=" + headerSize + '\n' +
+                "endingTag=" + endingTag + '\n' +
+                "linkSize=" + linkSize + '\n' +
+                "linkOff=" + linkOff + '\n' +
+                "mapOff=" + mapOff + '\n' +
+                "stringIdsSize=" + stringIdsSize + '\n' +
+                "stringIdsOff=" + stringIdsOff + '\n' +
+                "typeIdsSize=" + typeIdsSize + '\n' +
+                "typeIdsOff=" + typeIdsOff + '\n' +
+                "protoIdsSize=" + protoIdsSize + '\n' +
+                "protoIdsOff=" + protoIdsOff + '\n' +
+                "fieldIdsSize=" + fieldIdsSize + '\n' +
+                "fieldIdsOff=" + fieldIdsOff + '\n' +
+                "methodIdsSize=" + methodIdsSize + '\n' +
+                "methodIdsOff=" + methodIdsOff + '\n' +
+                "classDefsSize=" + classDefsSize + '\n' +
+                "classDefsOff=" + classDefsOff + '\n' +
+                "dataSize=" + dataSize + '\n' +
+                "dataOff=" + dataOff + '\n' +
+                '}';
     }
 }
