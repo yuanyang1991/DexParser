@@ -2,12 +2,15 @@ package com.yuanyang.struct;
 
 public class DexFile {
 
-    private DexHeader dexHeader;
+    private DexHeader header;
+    private StringPool stringPool;
 
-    public void setDexHeader(DexHeader header) {
-        this.dexHeader = header;
+    public void setHeader(DexHeader header) {
+        this.header = header;
     }
 
 
-
+    public void setStringPool(StringPool pool) {
+        this.stringPool = pool;
+    }
 }

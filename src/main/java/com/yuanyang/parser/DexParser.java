@@ -2,13 +2,12 @@ package com.yuanyang.parser;
 
 import com.yuanyang.struct.DexFile;
 import com.yuanyang.struct.DexHeader;
+import com.yuanyang.struct.StringPool;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-/**
- * 解析Dex文件格式
- */
+
 public class DexParser implements Parser<DexFile> {
 
     private ByteBuffer buffer;
@@ -24,7 +23,10 @@ public class DexParser implements Parser<DexFile> {
             throw new IllegalStateException("the file you parse is not an dex file");
         }
         DexFile dexFile = new DexFile();
-        dexFile.setDexHeader(DexHeader.parse(buffer));
+        DexHeader header = DexHeader.parse(buffer);
+        dexFile.setHeader(header);
+        StringPool pool = StringPool.parse(buffer, header.getStringIdsSize(), header.getStringIdsOff());
+        dexFile.setStringPool(pool);
         return dexFile;
     }
 

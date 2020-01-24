@@ -142,6 +142,91 @@ public class DexHeader {
         this.dataOff = dataOff;
     }
 
+
+    public String getCheckSum() {
+        return checkSum;
+    }
+
+    public int getFileSize() {
+        return fileSize;
+    }
+
+    public int getHeaderSize() {
+        return headerSize;
+    }
+
+    public String getEndingTag() {
+        return endingTag;
+    }
+
+    public int getLinkSize() {
+        return linkSize;
+    }
+
+    public int getLinkOff() {
+        return linkOff;
+    }
+
+    public int getMapOff() {
+        return mapOff;
+    }
+
+    public int getStringIdsSize() {
+        return stringIdsSize;
+    }
+
+    public int getStringIdsOff() {
+        return stringIdsOff;
+    }
+
+    public int getTypeIdsSize() {
+        return typeIdsSize;
+    }
+
+    public int getTypeIdsOff() {
+        return typeIdsOff;
+    }
+
+    public int getProtoIdsSize() {
+        return protoIdsSize;
+    }
+
+    public int getProtoIdsOff() {
+        return protoIdsOff;
+    }
+
+    public int getFieldIdsSize() {
+        return fieldIdsSize;
+    }
+
+    public int getFieldIdsOff() {
+        return fieldIdsOff;
+    }
+
+    public int getMethodIdsSize() {
+        return methodIdsSize;
+    }
+
+    public int getMethodIdsOff() {
+        return methodIdsOff;
+    }
+
+    public int getClassDefsSize() {
+        return classDefsSize;
+    }
+
+    public int getClassDefsOff() {
+        return classDefsOff;
+    }
+
+    public int getDataSize() {
+        return dataSize;
+    }
+
+    public int getDataOff() {
+        return dataOff;
+    }
+
     private static int parseCheckSum(ByteBuffer buffer) {
         int checkSum = buffer.getInt();
         // skip SHA1 signature
