@@ -15,6 +15,10 @@ public class StringPool {
         return pool;
     }
 
+    public String get(int index) {
+        return pool[index].data;
+    }
+
     /**
      * 1. get string offset
      * 2. move to offset

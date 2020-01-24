@@ -3,6 +3,7 @@ package com.yuanyang.parser;
 import com.yuanyang.struct.DexFile;
 import com.yuanyang.struct.DexHeader;
 import com.yuanyang.struct.StringPool;
+import com.yuanyang.struct.Types;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -27,6 +28,7 @@ public class DexParser implements Parser<DexFile> {
         dexFile.setHeader(header);
         StringPool pool = StringPool.parse(buffer, header.getStringIdsSize(), header.getStringIdsOff());
         dexFile.setStringPool(pool);
+        dexFile.setTypes(Types.parse(buffer, header.getTypeIdsSize(), header.getTypeIdsOff(), pool));
         return dexFile;
     }
 
