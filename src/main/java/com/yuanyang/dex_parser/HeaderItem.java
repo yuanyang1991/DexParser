@@ -88,5 +88,71 @@ public class HeaderItem {
         }
     }
 
+    public int getLinkSize() {
+        return linkSize;
+    }
 
+    public int getLinkOff() {
+        return linkOff;
+    }
+
+    public int getMapOff() {
+        return mapOff;
+    }
+
+    public int getStringIdSize() {
+        return stringIdSize;
+    }
+
+    public int getStringIdSOff() {
+        return stringIdSOff;
+    }
+
+    public int getTypeIdSize() {
+        return typeIdSize;
+    }
+
+    public int getTypeIdsOff() {
+        return typeIdsOff;
+    }
+
+    public int getProtoIdSize() {
+        return protoIdSize;
+    }
+
+    public int getProtoIdOff() {
+        return protoIdOff;
+    }
+
+    public int getFieldIdSize() {
+        return fieldIdSize;
+    }
+
+    public int getFieldIdOff() {
+        return fieldIdOff;
+    }
+
+    public int getMethodIdSize() {
+        return methodIdSize;
+    }
+
+    public int getMethodIdOff() {
+        return methodIdOff;
+    }
+
+    public int getClassDefsSize() {
+        return classDefsSize;
+    }
+
+    public int getClassDefsOff() {
+        return classDefsOff;
+    }
+
+    public int getDataSize() {
+        return dataSize;
+    }
+
+    public int getDataOff() {
+        return dataOff;
+    }
 }
